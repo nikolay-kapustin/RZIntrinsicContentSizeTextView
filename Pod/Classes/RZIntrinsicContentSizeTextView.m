@@ -181,6 +181,12 @@ static const CGFloat kRZTextViewDefaultHeightPriority = 999.0f;
     //[self adjustHeightIfNeededAnimated:self.shouldAnimateSizeChange];
 }
 
+- (void)setAttributedText:(NSAttributedString *)attributedText
+{
+    [super setAttributedText:attributedText];
+    [self adjustPlaceholderForTextChange];
+}
+
 - (void)setFont:(UIFont *)font
 {
     [super setFont:font];
