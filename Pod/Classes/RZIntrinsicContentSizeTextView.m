@@ -330,6 +330,20 @@ static const CGFloat kRZTextViewDefaultHeightPriority = 999.0f;
     }
 }
 
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
+{
+    if(sel_isEqual(action, @selector(paste:)))
+    {
+        dispatch_async(dispatch_get_main_queue(), ^
+                       {
+                           [self adjustHeightIfNeededAnimated:self.shouldAnimateSizeChange];
+                           [self adjustPlaceholderForTextChange];
+                       });
+    }
+    
+    return [super canPerformAction:action withSender:sender];
+}
+
 #pragma mark - Adjusters
 
 // Checks the height of the textview and adjusts if needed.
