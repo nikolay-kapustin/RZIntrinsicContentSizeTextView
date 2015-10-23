@@ -31,7 +31,6 @@
 #import "UIView+RZAutoLayoutPriorityHelpers.h"
 #import "UIView+RZAutoLayoutReplacementHelpers.h"
 
-static const CGFloat kRZTextViewAnimationDuration = 0.2f;
 static const CGFloat kRZTextViewDefaultHeightPriority = 999.0f;
 
 @interface RZIntrinsicContentSizeTextView ()
