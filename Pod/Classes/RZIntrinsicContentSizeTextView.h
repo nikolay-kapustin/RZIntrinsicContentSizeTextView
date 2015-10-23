@@ -27,6 +27,8 @@
 
 @import UIKit;
 
+static const CGFloat kRZTextViewAnimationDuration = 0.2f;
+
 @protocol RZIntrinsicContentSizeTextViewSizeChangedDelegate;
 
 /**
