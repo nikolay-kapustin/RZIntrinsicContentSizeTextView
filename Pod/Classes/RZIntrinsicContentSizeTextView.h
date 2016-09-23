@@ -66,6 +66,11 @@ IB_DESIGNABLE
  */
 @property (weak, nonatomic, readwrite) id<RZIntrinsicContentSizeTextViewSizeChangedDelegate> sizeChangeDelegate;
 
+/**
+ Gets the height of the content that is currently in the TextView
+ */
+- (CGFloat)intrinsicContentHeight;
+
 @end
 
 @protocol RZIntrinsicContentSizeTextViewSizeChangedDelegate <NSObject>
