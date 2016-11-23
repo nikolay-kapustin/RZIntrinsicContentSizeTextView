@@ -61,6 +61,9 @@ static const CGFloat kRZTextViewDefaultHeightPriority = 999.0f;
 @end
 
 @implementation RZIntrinsicContentSizeTextView
+{
+	BOOL _checkTextMenu;
+}
 
 @synthesize rztv_minHeightConstraint = _rztv_minHeightConstraint;
 @synthesize rztv_maxHeightConstraint = _rztv_maxHeightConstraint;
@@ -121,7 +124,8 @@ static const CGFloat kRZTextViewDefaultHeightPriority = 999.0f;
 {
     [super layoutSubviews];
 
-    [self adjustHeightIfNeededAnimated:self.shouldAnimateSizeChange];
+	if (!_checkTextMenu)
+		[self adjustHeightIfNeededAnimated:self.shouldAnimateSizeChange];
 }
 
 - (CGSize)intrinsicContentSize
@@ -332,15 +336,15 @@ static const CGFloat kRZTextViewDefaultHeightPriority = 999.0f;
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender
 {
-    if(sel_isEqual(action, @selector(paste:)))
-    {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
-                       {
-                           [self adjustHeightIfNeededAnimated:self.shouldAnimateSizeChange];
-                           [self adjustPlaceholderForTextChange];
-                       });
-    }
-    
+//    if(sel_isEqual(action, @selector(paste:)))
+//    {
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+//                       {
+//                           [self adjustHeightIfNeededAnimated:self.shouldAnimateSizeChange];
+//                           [self adjustPlaceholderForTextChange];
+//                       });
+//    }
+    _checkTextMenu = YES;
     return [super canPerformAction:action withSender:sender];
 }
 
